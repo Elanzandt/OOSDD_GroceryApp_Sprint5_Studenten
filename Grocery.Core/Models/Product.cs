@@ -7,12 +7,16 @@ namespace Grocery.Core.Models
         [ObservableProperty]
         public int stock;
         public DateOnly ShelfLife { get; set; }
-        public Product(int id, string name, int stock) : this(id, name, stock, default) { }
+        
+        [ObservableProperty]
+        public double price;
+        public Product(int id, string name, double price, int stock) : this(id, name, stock, default(DateOnly), price) { }
 
-        public Product(int id, string name, int stock, DateOnly shelfLife) : base(id, name) 
+        public Product(int id, string name, int stock, DateOnly shelfLife, double Price) : base(id, name)
         {
             Stock = stock;
             ShelfLife = shelfLife;
+            Price = price;
         }
         public override string? ToString()
         {
